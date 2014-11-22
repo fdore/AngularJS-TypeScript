@@ -4,7 +4,11 @@
         ts          = require('gulp-typescript'),
         eventStream = require('event-stream'),
         clean       = require('gulp-clean'),
-        htmlReplace = require('gulp-html-replace');
+        htmlReplace = require('gulp-html-replace'),
+        karma       = require('karma').server;
+
+    var gulp = require('gulp');
+    var karma = require('karma').server;
 
     var tsProject = ts.createProject({
         declarationFiles: true,
@@ -18,10 +22,20 @@
         var tsResult =  gulp.src('src/**/*.ts')
                             .pipe(ts(tsProject));
 
+        var vendors = gulp.src('vendor/**')
+            .pipe(gulp.dest('build/vendor'));
+
         return eventStream.merge(
-            tsResult.dts.pipe(gulp.dest('dist/definitions')),
-            tsResult.js.pipe(gulp.dest('dist/js'))
+            tsResult.js.pipe(gulp.dest('build/js'))
         );
+    });
+
+
+    gulp.task('test', function (done) {
+        karma.start({
+            configFile: __dirname + '/karma.conf.js',
+            singleRun: false
+        }, done);
     });
 
     gulp.task('html', function () {
@@ -40,8 +54,8 @@
             .pipe(gulp.dest('./dist/vendor/'));
     });
 
-    gulp.task('watch', ['ts', 'js', 'html'], function() {
-        gulp.watch('src/**/*.ts', ['ts', 'html', 'js']);
+    gulp.task('watch', ['ts', 'js', 'html', 'test'], function() {
+        gulp.watch('src/**/*.ts', ['ts', 'html', 'js', 'test']);
     });
 
 

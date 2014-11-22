@@ -1,7 +1,6 @@
 /// <reference path="../homepage/homepageModule.ts" />
-/// <amd-dependency path="homepage/homepageModule"/>
 
-import homepage = require('../homepage/homepageModule');
+import homepage = require('homepage/homepageModule');
 
 export class App {
     applicationName :string;

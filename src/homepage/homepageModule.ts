@@ -1,5 +1,4 @@
 /// <reference path="../homepage/homepageController.ts" />
-/// <amd-dependency path="homepage/homepageController"/>
 
 import HomePageController = require('homepage/homepageController');
 
