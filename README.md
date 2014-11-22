@@ -1,0 +1,1 @@
+Gulp + TypeScript + AngularJS + Karma
