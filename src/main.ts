@@ -2,8 +2,7 @@ require.config({
     baseUrl: './',
 
     paths: {
-        'angular': '../vendor/angularjs/angular',
-        'angular-mocks': '../vendor/angular-mocks/angular-mocks'
+        'angular': '../vendor/angularjs/angular'
     },
 
     shim: {
