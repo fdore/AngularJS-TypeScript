@@ -2,7 +2,7 @@ require.config({
     baseUrl: './',
 
     paths: {
-        'angular': '../vendor/angularjs/angular'
+        'angular': '../vendor/angular/angular'
     },
 
     shim: {

@@ -12,7 +12,7 @@ require({
     // !! Karma serves files from '/base'
     baseUrl: '/base/js',
     paths: {
-        'angular': '../vendor/angularjs/angular',
+        'angular': '../vendor/angular/angular',
         'angular-mocks': '../vendor/angular-mocks/angular-mocks'
     },
     shim: {
