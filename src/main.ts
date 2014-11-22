@@ -1,5 +1,5 @@
 require.config({
-    baseUrl: './',
+    baseUrl: './js',
 
     paths: {
         'angular': '../vendor/angular/angular'
@@ -12,7 +12,7 @@ require.config({
     }
 });
 
-    require(['js/boot/app', 'angular'], (app, angular) => {
+    require(['boot/app', 'angular'], (app, angular) => {
     angular.element(document).ready(function () {
         var application = new app.App();
         angular.bootstrap(document, [application.applicationName]);
