@@ -8,7 +8,7 @@ describe('HomePageController', function () {
        scope;
 
     beforeEach(angular.mock.module(new homepage.HomePageNgModule().name));
-    
+
     describe('Given we have a controller', function () {
         beforeEach(angular.mock.inject(($rootScope, $controller) => {
             scope = $rootScope.$new();
