@@ -5,16 +5,12 @@
         eventStream = require('event-stream'),
         clean       = require('gulp-clean'),
         htmlReplace = require('gulp-html-replace'),
-        karma       = require('karma').server;
-
-    var gulp = require('gulp');
-    var karma = require('karma').server;
-
-    var tsProject = ts.createProject({
-        declarationFiles: true,
-        noExternalResolve: true,
-        module: 'amd'
-    });
+        karma       = require('karma').server,
+        tsProject = ts.createProject({
+            declarationFiles: true,
+            noExternalResolve: true,
+            module: 'amd'
+        });
 
 
 
@@ -22,7 +18,7 @@
         var tsResult =  gulp.src('src/**/*.ts')
                             .pipe(ts(tsProject));
 
-        var vendors = gulp.src('vendor/**')
+        gulp.src('vendor/**')
             .pipe(gulp.dest('build/vendor'));
 
         return eventStream.merge(
@@ -51,11 +47,11 @@
 
     gulp.task('js', function () {
         return  gulp.src('./vendor/**/*')
-            .pipe(gulp.dest('./dist/vendor/'));
+                    .pipe(gulp.dest('./dist/vendor/'));
     });
 
     gulp.task('watch', ['ts', 'js', 'html', 'test'], function() {
-        gulp.watch('src/**/*.ts', ['ts', 'html', 'js', 'test']);
+        gulp.watch('src/**/*.ts', ['ts', 'js', 'html', 'test']);
     });
 
 
